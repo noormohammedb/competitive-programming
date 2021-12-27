@@ -10,6 +10,7 @@ struct Node
 };
 
 Node *head = NULL;
+Node *tail = NULL;
 
 int main()
 {
@@ -30,13 +31,14 @@ void insert(int _data)
 {
   Node *newNode = new Node;
   newNode->data = _data;
-  newNode->next = head;
-  head = newNode;
+  newNode->next = NULL;
+  head == NULL ? head = tail = newNode : tail->next = newNode;
+  tail = newNode;
 }
 void showNodes()
 {
   Node *currentNode = head;
-  cout << "nodes : ";
+  cout << "List : ";
   while (currentNode != NULL)
   {
     cout << currentNode->data << " ";
