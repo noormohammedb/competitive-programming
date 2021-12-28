@@ -2,6 +2,7 @@
 using namespace std;
 void insert();
 void insertAt();
+void deleteAt();
 void showNodes();
 
 struct Node
@@ -16,8 +17,8 @@ Node *tail = NULL;
 int main()
 {
   int i = 1, input, choice;
-  cout << "1.Append\n2.Insert(data, position)\n3.Show\n4.Exit\n";
-  while (choice != 4)
+  cout << "1.Append\n2.Insert(data, position)\n3.Show\n4.Delete (position)\n5.Exit\n";
+  while (choice != 5)
   {
     cout << i << ". Enter enter choice : ";
     cin >> choice;
@@ -33,6 +34,9 @@ int main()
       showNodes();
       break;
     case 4:
+      deleteAt();
+      break;
+    case 5:
       cout << "Exit";
       exit(0);
       break;
@@ -79,9 +83,38 @@ void insertAt()
   if (Temp->next == NULL)
   {
     tail = newNode;
+    newNode->next = NULL;
   }
   newNode->next = Temp->next;
   Temp->next = newNode;
+}
+void deleteAt()
+{
+  int position, i;
+  Node *temp, *iteration = head, *current = iteration->next;
+  cout << "enter position to delete : ";
+  cin >> position;
+  if (position <= 1)
+  {
+    current = head;
+    head = head->next;
+    delete current;
+    return;
+  }
+
+  for (i = 0; i < position - 2 && current->next != NULL; i++)
+  {
+    iteration = iteration->next;
+    current = iteration->next;
+  }
+  if (current->next == NULL)
+  {
+    tail = iteration;
+    iteration->next = NULL;
+  }
+
+  iteration->next = current->next;
+  delete current;
 }
 void showNodes()
 {
