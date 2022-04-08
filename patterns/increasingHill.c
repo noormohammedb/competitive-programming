@@ -1,22 +1,19 @@
 #include <stdio.h>
 int main()
 {
-  int i, j, k, l, m, count = 5;
+  int i, j, count = 5;
   for (i = 1; i <= count; i++)
   {
     for (j = i; j <= count - 1; j++)
     {
-      //			printf("  ");
       printf(" ");
     }
-    for (k = 1; k < i; k++)
+    for (j = 1; j < i; j++)
     {
-      //			printf(" * ");
       printf("*");
     }
-    for (l = 0; l < i; l++)
+    for (j = 0; j < i; j++)
     {
-      //			printf(" * ");
       printf("*");
     }
 
